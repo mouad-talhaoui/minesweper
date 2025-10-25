@@ -1,0 +1,11 @@
+{
+    "players": [
+        {
+            "name": "Mouad",
+            "totalPlays": 10,
+            "hashedpassowrd": "5f4dcc3b5aa765d61d8327deb882cf99",
+            "toalLose": 3,
+            "totalWins": 7
+        }
+    ]
+}
