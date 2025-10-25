@@ -2,32 +2,24 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.io.*;
-import java.lang.reflect.Type;
 import java.nio.file.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
+import java.util.List;
 
-class Player {
-    String name;
-    int totalPlays;
-    String hashedpassowrd;
-    int toalLose;
-    int totalWins;
 
-    Player(String name, String hashedpassowrd) {
-        this.name = name;
-        this.totalPlays = 0;
-        this.hashedpassowrd = hashedpassowrd;
-        this.toalLose = 0;
-        this.totalWins = 0;
-    }
-}
 
 class PlayersData {
     List<Player> players = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "PlayersData{" +
+                "players=" + players +
+                '}';
+    }
 }
 
 public class Register extends JFrame {
@@ -82,7 +74,7 @@ public class Register extends JFrame {
         String password = new String(passwordField.getPassword());
 
         if (username.isEmpty() || password.isEmpty()) {
-            messageLabel.setText("⚠️ Please fill in all fields.");
+            messageLabel.setText("Please fill in all fields.");
             return;
         }
 
@@ -91,20 +83,42 @@ public class Register extends JFrame {
         // Check if username already exists
         for (Player p : data.players) {
             if (p.name.equalsIgnoreCase(username)) {
-                messageLabel.setText("❌ Username already exists!");
+                messageLabel.setText(" Username already exists!");
                 return;
             }
         }
-
+        System.out.println(data);
         String hashedPassword = md5(password);
         Player newPlayer = new Player(username, hashedPassword);
         data.players.add(newPlayer);
+        System.out.println(data);
         savePlayersFile(data);
 
         messageLabel.setForeground(Color.GREEN);
-        messageLabel.setText("✅ Registration successful!");
+        messageLabel.setText(" Registration successful!");
         usernameField.setText("");
         passwordField.setText("");
+        // Create the window first, then pass it to the method
+        Login loginWindow = new Login();
+        closeAllWindowsAndOpenNew(loginWindow);
+
+
+
+    }
+
+    private  void closeAllWindowsAndOpenNew(JFrame  newWindow) {
+        // Get all open windows
+        Window[] windows = Window.getWindows();
+
+        // Close all windows
+        for (Window window : windows) {
+            if (window instanceof JFrame) {
+                window.dispose();
+            }
+        }
+
+        // Open new window
+        newWindow.setVisible(true);
     }
 
     private PlayersData readPlayersFile() {
@@ -114,10 +128,13 @@ public class Register extends JFrame {
             }
             String json = Files.readString(Paths.get(FILE_PATH));
             JsonObject root = JsonParser.parseString(json).getAsJsonObject();
-            Type listType = new TypeToken<java.util.List<Player>>(){}.getType();
+            java.lang.reflect.Type listType = new TypeToken<List<Player>>(){}.getType();
             PlayersData data = new PlayersData();
+            System.out.println(data);
             data.players = gson.fromJson(root.get("players"), listType);
+            System.out.println(data);
             if (data.players == null) data.players = new ArrayList<>();
+            System.out.println(data);
             return data;
         } catch (IOException e) {
             e.printStackTrace();
@@ -143,9 +160,5 @@ public class Register extends JFrame {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Register().setVisible(true));
     }
 }

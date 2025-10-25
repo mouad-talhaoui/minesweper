@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Minesweeper {
+    
     public Minesweeper() {
         String jsonContent = "{\n" +
             "    \"players\": [\n" +
