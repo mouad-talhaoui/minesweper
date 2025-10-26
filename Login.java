@@ -20,7 +20,7 @@ public class Login extends JFrame {
     public Login() {
         setTitle("Player Registration");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 250);
+        setSize(700, 700);
         setLocationRelativeTo(null);
         setLayout(new GridBagLayout());
 
@@ -89,8 +89,8 @@ public class Login extends JFrame {
             messageLabel.setForeground(Color.RED);
             messageLabel.setText(" Password does not match");
         }else{
-            GameBoard loginWindow = new GameBoard();
-            closeAllWindowsAndOpenNew(loginWindow);
+            GameBoard loginWindow = new GameBoard(username);
+            CloseAllWindowUtil.closeAllWindowsAndOpenNew(loginWindow);
         }
 
 
@@ -125,20 +125,7 @@ public class Login extends JFrame {
             e.printStackTrace();
         }
     }
-    private  void closeAllWindowsAndOpenNew(JFrame  newWindow) {
-        // Get all open windows
-        Window[] windows = Window.getWindows();
 
-        // Close all windows
-        for (Window window : windows) {
-            if (window instanceof JFrame) {
-                window.dispose();
-            }
-        }
-
-        // Open new window
-        newWindow.setVisible(true);
-    }
     private String md5(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");

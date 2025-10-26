@@ -100,26 +100,13 @@ public class Register extends JFrame {
         passwordField.setText("");
         // Create the window first, then pass it to the method
         Login loginWindow = new Login();
-        closeAllWindowsAndOpenNew(loginWindow);
+        CloseAllWindowUtil.closeAllWindowsAndOpenNew(loginWindow);
 
 
 
     }
 
-    private  void closeAllWindowsAndOpenNew(JFrame  newWindow) {
-        // Get all open windows
-        Window[] windows = Window.getWindows();
 
-        // Close all windows
-        for (Window window : windows) {
-            if (window instanceof JFrame) {
-                window.dispose();
-            }
-        }
-
-        // Open new window
-        newWindow.setVisible(true);
-    }
 
     private PlayersData readPlayersFile() {
         try {

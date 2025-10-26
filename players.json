@@ -4,14 +4,21 @@
       "name": "Mouad",
       "totalPlays": 10,
       "hashedpassowrd": "5f4dcc3b5aa765d61d8327deb882cf99",
-      "toalLose": 3,
+      "totalLose": 3,
       "totalWins": 7
     },
     {
-      "name": "wxcvbn",
+      "name": "google",
       "totalPlays": 0,
-      "hashedpassowrd": "7682fe272099ea26efe39c890b33675b",
-      "toalLose": 0,
+      "hashedpassowrd": "c822c1b63853ed273b89687ac505f9fa",
+      "totalLose": 0,
+      "totalWins": 0
+    },
+    {
+      "name": "facebook",
+      "totalPlays": 2,
+      "hashedpassowrd": "26cae7718c32180a7a0f8e19d6d40a59",
+      "totalLose": 2,
       "totalWins": 0
     }
   ]
