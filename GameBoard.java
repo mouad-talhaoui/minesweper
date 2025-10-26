@@ -37,8 +37,9 @@ public class GameBoard extends JFrame {
     // Constructor
     public GameBoard(String username) {
         // Set frame properties
-        setTitle("Minesweeper");
+
         this.username = username;
+        setTitle(username + " is playing ....");
         setSize(boardWidth, boardHeight);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -72,6 +73,7 @@ public class GameBoard extends JFrame {
                     @Override
                     public void mousePressed(MouseEvent e) {
                         if (gameOver) {
+                            GameDataUpdater.updatePlayerStats(username, false);
                             SwingUtilities.invokeLater(() -> showDialog(username));
                         }
                         MineTile clickedTile = (MineTile) e.getSource();
@@ -129,7 +131,7 @@ public class GameBoard extends JFrame {
 
         gameOver = true;
         textLabel.setText("Game Over!");
-        GameDataUpdater.updatePlayerStats(username, false);
+
     }
 
     // Method to check for neighboring mines recursively

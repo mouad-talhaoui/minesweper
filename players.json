@@ -1,24 +1,17 @@
 {
   "players": [
     {
-      "name": "Mouad",
-      "totalPlays": 10,
-      "hashedpassowrd": "5f4dcc3b5aa765d61d8327deb882cf99",
-      "totalLose": 3,
-      "totalWins": 7
-    },
-    {
-      "name": "google",
+      "name": "fkfdjh",
       "totalPlays": 0,
-      "hashedpassowrd": "c822c1b63853ed273b89687ac505f9fa",
+      "hashedpassowrd": "9651164be8438e5ef069025b131ac6cd",
       "totalLose": 0,
       "totalWins": 0
     },
     {
       "name": "facebook",
-      "totalPlays": 2,
+      "totalPlays": 1,
       "hashedpassowrd": "26cae7718c32180a7a0f8e19d6d40a59",
-      "totalLose": 2,
+      "totalLose": 1,
       "totalWins": 0
     }
   ]
