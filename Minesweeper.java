@@ -21,17 +21,23 @@ public class Minesweeper extends JFrame {
         JButton loginButton = new JButton("Login");
         JButton playerScoreButton = new JButton("Player Score");
 
-        // Make buttons bigger
-        registerButton.setPreferredSize(new Dimension(200, 60));
-        loginButton.setPreferredSize(new Dimension(200, 60));
-        playerScoreButton.setPreferredSize(new Dimension(200, 60));
+        // Set button size and style
+        Dimension buttonSize = new Dimension(200, 60);  // Common size for all buttons
+        registerButton.setPreferredSize(buttonSize);
+        loginButton.setPreferredSize(buttonSize);
+        playerScoreButton.setPreferredSize(buttonSize);
 
-        // Align buttons in the center
+        // Set font and alignment for the buttons
+        Font buttonFont = new Font("Arial", Font.PLAIN, 18);  // Font size 18
+        registerButton.setFont(buttonFont);
+        loginButton.setFont(buttonFont);
+        playerScoreButton.setFont(buttonFont);
+
         registerButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         playerScoreButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Add listeners (do nothing for now)
+        // Add listeners for buttons
         registerButton.addActionListener(e -> {
             Register register = new Register();
             CloseAllWindowUtil.closeAllWindowsAndOpenNew(register);
@@ -47,12 +53,14 @@ public class Minesweeper extends JFrame {
             CloseAllWindowUtil.closeAllWindowsAndOpenNew(playerScore);
         });
 
-        // Add buttons to the frame (these will be added vertically)
-        add(Box.createVerticalGlue()); // Adds a flexible space at the top
+        // Add buttons to the frame with spacing between them
+        add(Box.createVerticalGlue()); // Adds flexible space at the top
         add(registerButton);
+        add(Box.createVerticalStrut(20));  // Adds fixed space (20px) between buttons
         add(loginButton);
+        add(Box.createVerticalStrut(20));  // Adds fixed space (20px) between buttons
         add(playerScoreButton);
-        add(Box.createVerticalGlue()); // Adds a flexible space at the bottom
+        add(Box.createVerticalGlue()); // Adds flexible space at the bottom
 
         setLocationRelativeTo(null); // Center the window
     }
@@ -84,5 +92,4 @@ public class Minesweeper extends JFrame {
             System.out.println("File already exists: " + file.getAbsolutePath());
         }
     }
-
 }

@@ -18,7 +18,7 @@ public class Login extends JFrame {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public Login() {
-        setTitle("Player Registration");
+        setTitle("Player Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700, 700);
         setLocationRelativeTo(null);
@@ -33,6 +33,9 @@ public class Login extends JFrame {
         add(userLabel, gbc);
 
         usernameField = new JTextField();
+        // Set the font size and preferred size for the username field
+        usernameField.setFont(new Font("Arial", Font.PLAIN, 18)); // Font size 18
+        usernameField.setPreferredSize(new Dimension(200, 40)); // Width: 200, Height: 40
         gbc.gridx = 1; gbc.gridy = 0; gbc.gridwidth = 2;
         add(usernameField, gbc);
 
@@ -41,10 +44,16 @@ public class Login extends JFrame {
         add(passLabel, gbc);
 
         passwordField = new JPasswordField();
+        // Set the font size and preferred size for the password field
+        passwordField.setFont(new Font("Arial", Font.PLAIN, 18)); // Font size 18
+        passwordField.setPreferredSize(new Dimension(200, 40)); // Width: 200, Height: 40
         gbc.gridx = 1; gbc.gridy = 1; gbc.gridwidth = 2;
         add(passwordField, gbc);
 
         JButton LoginButton = new JButton("Login");
+        // Set the font size and preferred size for the Login button
+        LoginButton.setFont(new Font("Arial", Font.PLAIN, 18)); // Font size 18
+        LoginButton.setPreferredSize(new Dimension(200, 50)); // Width: 200, Height: 50
         gbc.gridx = 1; gbc.gridy = 2; gbc.gridwidth = 1;
         add(LoginButton, gbc);
 
@@ -82,8 +91,6 @@ public class Login extends JFrame {
             return;
         }
 
-
-
         String hashedPassword = md5(password);
         if(!compareMD5Passwords(exisinghashedpassword,hashedPassword)){
             messageLabel.setForeground(Color.RED);
@@ -92,8 +99,6 @@ public class Login extends JFrame {
             GameBoard loginWindow = new GameBoard(username);
             CloseAllWindowUtil.closeAllWindowsAndOpenNew(loginWindow);
         }
-
-
     }
 
     private PlayersData readPlayersFile() {

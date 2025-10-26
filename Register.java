@@ -9,8 +9,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.List;
 
-
-
 class PlayersData {
     List<Player> players = new ArrayList<>();
 
@@ -33,7 +31,7 @@ public class Register extends JFrame {
     public Register() {
         setTitle("Player Registration");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 250);
+        setSize(700, 700);
         setLocationRelativeTo(null);
         setLayout(new GridBagLayout());
 
@@ -46,6 +44,9 @@ public class Register extends JFrame {
         add(userLabel, gbc);
 
         usernameField = new JTextField();
+        // Set the font size and preferred size for the username field
+        usernameField.setFont(new Font("Arial", Font.PLAIN, 18)); // Font size 18
+        usernameField.setPreferredSize(new Dimension(200, 40)); // Width: 200, Height: 40
         gbc.gridx = 1; gbc.gridy = 0; gbc.gridwidth = 2;
         add(usernameField, gbc);
 
@@ -54,10 +55,16 @@ public class Register extends JFrame {
         add(passLabel, gbc);
 
         passwordField = new JPasswordField();
+        // Set the font size and preferred size for the password field
+        passwordField.setFont(new Font("Arial", Font.PLAIN, 18)); // Font size 18
+        passwordField.setPreferredSize(new Dimension(200, 40)); // Width: 200, Height: 40
         gbc.gridx = 1; gbc.gridy = 1; gbc.gridwidth = 2;
         add(passwordField, gbc);
 
         JButton registerButton = new JButton("Register");
+        // Set the font size and preferred size for the Register button
+        registerButton.setFont(new Font("Arial", Font.PLAIN, 18)); // Font size 18
+        registerButton.setPreferredSize(new Dimension(200, 50)); // Width: 200, Height: 50
         gbc.gridx = 1; gbc.gridy = 2; gbc.gridwidth = 1;
         add(registerButton, gbc);
 
@@ -87,6 +94,7 @@ public class Register extends JFrame {
                 return;
             }
         }
+
         System.out.println(data);
         String hashedPassword = md5(password);
         Player newPlayer = new Player(username, hashedPassword);
@@ -98,15 +106,11 @@ public class Register extends JFrame {
         messageLabel.setText(" Registration successful!");
         usernameField.setText("");
         passwordField.setText("");
-        // Create the window first, then pass it to the method
+
+        // Open login window after registration
         Login loginWindow = new Login();
         CloseAllWindowUtil.closeAllWindowsAndOpenNew(loginWindow);
-
-
-
     }
-
-
 
     private PlayersData readPlayersFile() {
         try {
@@ -117,11 +121,8 @@ public class Register extends JFrame {
             JsonObject root = JsonParser.parseString(json).getAsJsonObject();
             java.lang.reflect.Type listType = new TypeToken<List<Player>>(){}.getType();
             PlayersData data = new PlayersData();
-            System.out.println(data);
             data.players = gson.fromJson(root.get("players"), listType);
-            System.out.println(data);
             if (data.players == null) data.players = new ArrayList<>();
-            System.out.println(data);
             return data;
         } catch (IOException e) {
             e.printStackTrace();
