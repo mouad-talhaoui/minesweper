@@ -9,9 +9,9 @@
     },
     {
       "name": "facebook",
-      "totalPlays": 1,
+      "totalPlays": 2,
       "hashedpassowrd": "26cae7718c32180a7a0f8e19d6d40a59",
-      "totalLose": 1,
+      "totalLose": 2,
       "totalWins": 0
     },
     {
@@ -33,6 +33,13 @@
       "totalPlays": 1,
       "hashedpassowrd": "b144eefb9e785e5e493ea493850cad1d",
       "totalLose": 1,
+      "totalWins": 0
+    },
+    {
+      "name": "fjkndfjflkd",
+      "totalPlays": 0,
+      "hashedpassowrd": "8935083d7fdb8cd564537fdfdb8c3b2b",
+      "totalLose": 0,
       "totalWins": 0
     }
   ]
